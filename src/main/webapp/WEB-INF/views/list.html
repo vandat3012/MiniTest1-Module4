@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace ="/layout :: head">
+    <meta charset="UTF-8">
+    <title>List Book</title>
+</head>
+<body>
+<h3>Books</h3>
+<p>
+    <a th:href="@{/books/create}">Create New Book</a>
+</p>
+
+<table id = "books">
+    <thead>
+    <tr>
+        <th>Stt</th>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Price</th>
+        <th>Img</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+    </thead>
+    <tr th:each = "b,bStat : ${books}">
+        <td th:text = "${bStat.count}"></td>
+        <td th:text = "${b.getName()}"></td>
+        <td th:text = "${b.getAuthor()}"></td>
+        <td th:text = "${b.getPrice()}"></td>
+        <td><img th:src="@{'/image/'+${b.getImg()}}" height="100" width="100"></td>
+        <td><a th:href="@{/books/{id}/edit(id=${b.getId()})}">Edit</a></td>
+        <td><a th:href="@{/books/{id}/delete(id=${b.getId()})}">Delete</a></td>
+        <td><a th:href="@{/books/{id}/view(id=${b.getId()})}">View</a></td>
+    </tr>
+</table>
+</body>
+<footer th:replace = "layout :: footer"></footer>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head ">
+    <meta charset="UTF-8">
+    <title>Create New Book</title>
+</head>
+<body>
+<h3>Create New Book</h3>
+<p>
+    <a th:href="@{/books}">Back to list book</a>
+</p>
+<div id = "form">
+    <form th:action="@{/books/save}" th:object="${books}" method="post" novalidate="novalidate" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" th:field="*{name}">
+        </div>
+        <div>
+            <label for="author">Author</label>
+            <input type="text" id="author" th:field="*{author}">
+        </div>
+        <div>
+            <label for="price">Price</label>
+            <input type="text" id="price" th:field="*{price}">
+        </div>
+        <div>
+            <label for="img">Img</label>
+            <input type="file" id="img" th:field="*{img}">
+        </div>
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+</body>
+<footer th:replace="/layout :: footer"></footer>
+</html>

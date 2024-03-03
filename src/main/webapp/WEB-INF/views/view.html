@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head ">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h3>Details Book</h3>
+<p>
+  <a th:href="@{/books}">Back to list book</a>
+</p>
+<div id="detail">
+  <div>
+    <label>Name:</label>
+    <label th:text="${books.name}"></label>
+  </div>
+  <div>
+    <label>Email:</label>
+    <label th:text="${books.author}"></label>
+  </div>
+  <div>
+    <label>Address:</label>
+    <label th:text="${books.price}"></label>
+  </div>
+  <div>
+    <label>Address:</label>
+    <img th:src="@{'/image/'+${books.getImg()}}" height="100" width="100">
+  </div>
+</div>
+</body>
+<footer th:replace="/layout :: footer"></footer>
+</html>
