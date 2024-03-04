@@ -38,7 +38,7 @@ public class HibernateBookService implements IBookService {
 
     @Override
     public Book findById(int id) {
-        String queryStr = "SELECT c FROM Book AS c WHERE c.id = :id";
+        String queryStr = "select c from Book as c where c.id = :id";
         TypedQuery<Book> query = entityManager.createQuery(queryStr, Book.class);
         query.setParameter("id", id);
         return query.getSingleResult();
