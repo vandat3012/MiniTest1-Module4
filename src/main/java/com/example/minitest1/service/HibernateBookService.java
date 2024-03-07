@@ -58,7 +58,9 @@ public class HibernateBookService implements IBookService {
             origin.setName(book.getName());
             origin.setAuthor(book.getAuthor());
             origin.setPrice(book.getPrice());
-            origin.setImg(book.getImg());
+            if(book.getImg() == null) {
+                origin.setImg(book.getImg());
+            }
             session.saveOrUpdate(origin);
             transaction.commit();
         } catch (Exception e) {

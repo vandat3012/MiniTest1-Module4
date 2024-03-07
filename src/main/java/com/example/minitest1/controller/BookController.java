@@ -91,7 +91,7 @@ public class BookController {
         book.setAuthor(bookForm.getAuthor());
         book.setPrice(bookForm.getPrice());
         book.setImg(fileName);
-        iBookService.edit(book);
+        iBookService.save(book);
         return "redirect:/books";
     }
 
