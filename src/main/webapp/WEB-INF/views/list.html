@@ -28,7 +28,7 @@
         <td th:text = "${b.getName()}"></td>
         <td th:text = "${b.getAuthor()}"></td>
         <td th:text = "${b.getPrice()}"></td>
-        <td><img th:src="@{'/image/'+${b.getImg()}}" height="100" width="100"></td>
+        <td><img th:src="@{'/image/'+${b.getImg()}}" height="100" width="100" alt=""></td>
         <td><a th:href="@{/books/{id}/edit(id=${b.getId()})}">Edit</a></td>
         <td><a th:href="@{/books/{id}/delete(id=${b.getId()})}">Delete</a></td>
         <td><a th:href="@{/books/{id}/view(id=${b.getId()})}">View</a></td>

@@ -49,8 +49,16 @@ public class BookController {
     public String save(BookForm bookForm) throws IOException {
         MultipartFile file = bookForm.getImg();
         String nameImg = file.getOriginalFilename();
-        FileCopyUtils.copy(file.getBytes(), new File(upload_file + nameImg));
+        System.out.println(file);
+        try {
+            FileCopyUtils.copy(file.getBytes(), new File(upload_file + nameImg));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
         Book book = new Book();
+        if (bookForm.getId() != 0){
+            book.setId(bookForm.getId());
+        }
         book.setName(bookForm.getName());
         book.setAuthor(bookForm.getAuthor());
         book.setPrice(bookForm.getPrice());
@@ -69,9 +77,16 @@ public class BookController {
     public String edit(BookForm bookForm) throws IOException {
         MultipartFile file = bookForm.getImg();
         String fileName = file.getOriginalFilename();
-        FileCopyUtils.copy(file.getBytes(), new File(upload_file + fileName));
+        System.out.println(file);
+        try {
+            FileCopyUtils.copy(file.getBytes(), new File(upload_file + fileName));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
         Book book = new Book();
-        book.setId(bookForm.getId());
+        if (bookForm.getId() != 0){
+            book.setId(bookForm.getId());
+        }
         book.setName(bookForm.getName());
         book.setAuthor(bookForm.getAuthor());
         book.setPrice(bookForm.getPrice());
