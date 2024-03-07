@@ -75,24 +75,22 @@ public class BookController {
 
     @PostMapping("/edit")
     public String edit(BookForm bookForm) throws IOException {
+        Book book = new Book();
         MultipartFile file = bookForm.getImg();
         String fileName = file.getOriginalFilename();
         System.out.println(file);
         try {
             FileCopyUtils.copy(file.getBytes(), new File(upload_file + fileName));
+            book.setImg(fileName);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        Book book = new Book();
         if (bookForm.getId() != 0){
             book.setId(bookForm.getId());
         }
         book.setName(bookForm.getName());
         book.setAuthor(bookForm.getAuthor());
         book.setPrice(bookForm.getPrice());
-        if (bookForm.getImg() == null){
-            book.setImg(fileName);
-        }
         iBookService.save(book);
         return "redirect:/books";
     }
