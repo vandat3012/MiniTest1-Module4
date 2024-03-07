@@ -26,6 +26,7 @@
         </div>
         <div>
             <label for="img">Img</label>
+            <img th:src="@{'/image/'+${books.getImg()}}" height="100" width="100" alt="">
             <input type="file" id="img" th:field="*{img}">
         </div>
         <input type="submit" value="Edit"/>

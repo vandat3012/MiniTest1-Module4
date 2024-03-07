@@ -90,7 +90,9 @@ public class BookController {
         book.setName(bookForm.getName());
         book.setAuthor(bookForm.getAuthor());
         book.setPrice(bookForm.getPrice());
-        book.setImg(fileName);
+        if (bookForm.getImg() == null){
+            book.setImg(fileName);
+        }
         iBookService.save(book);
         return "redirect:/books";
     }
